@@ -2,6 +2,8 @@
 
 HACS Frontend plugin repository for the MLB Standings Lovelace card.
 
+Current version: 1.0.0.2
+
 ## Install via HACS
 
 1. Open HACS.
