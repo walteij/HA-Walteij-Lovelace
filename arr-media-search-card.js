@@ -1,4 +1,4 @@
-const ARR_MEDIA_SEARCH_CARD_VERSION = "1.0.0";
+const ARR_MEDIA_SEARCH_CARD_VERSION = "1.1.0";
 
 class ArrMediaSearchCard extends HTMLElement {
   getConfigElement() {

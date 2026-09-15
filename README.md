@@ -30,7 +30,7 @@ Register either file as a `JavaScript Module` resource. Restart Home Assistant a
 
 ### Search and download card
 
-Use `custom:arr-media-manager-card` for a one-step search-and-add workflow:
+`custom:arr-media-manager-card` is retained as a legacy card for existing dashboards. New dashboards should use `custom:arr-media-search-card`; it performs a lookup first and lets you explicitly select the result before adding it.
 
 ```yaml
 type: custom:arr-media-manager-card
@@ -38,6 +38,8 @@ title: ARR zoeken
 config_entry_id: YOUR_ARR_CONFIG_ENTRY_ID
 search_after_add: true
 ```
+
+After upgrading, hard-refresh the browser and replace legacy cards with the result-selection card below.
 
 ### Lookup result card
 

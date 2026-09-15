@@ -1,3 +1,5 @@
+const ARR_MEDIA_MANAGER_CARD_VERSION = "1.1.0";
+
 class ArrMediaManagerCard extends HTMLElement {
   setConfig(config) {
     if (!config || !config.config_entry_id) {
@@ -8,6 +10,7 @@ class ArrMediaManagerCard extends HTMLElement {
       search_after_add: true,
       ...config,
     };
+    console.info(`ARR Media Manager legacy card ${ARR_MEDIA_MANAGER_CARD_VERSION}`);
     this._render();
   }
 
@@ -74,7 +77,7 @@ class ArrMediaManagerCard extends HTMLElement {
         status.textContent = "Toegevoegd. Download gestart.";
         query.value = "";
       } catch (error) {
-        status.textContent = `Fout: ${error.message || error}`;
+        status.textContent = "Deze oude kaart gebruikt de verouderde one-step zoekactie. Gebruik custom:arr-media-search-card voor de actuele lookup/add-flow.";
       } finally {
         button.disabled = false;
       }
@@ -127,8 +130,10 @@ class ArrMediaManagerCard extends HTMLElement {
 
 customElements.define("arr-media-manager-card", ArrMediaManagerCard);
 window.customCards = window.customCards || [];
-window.customCards.push({
-  type: "arr-media-manager-card",
-  name: "ARR Media Manager Search",
-  description: "Search an ARR app and start the download workflow.",
-});
+if (!window.customCards.some((card) => card.type === "arr-media-manager-card")) {
+  window.customCards.push({
+    type: "arr-media-manager-card",
+    name: "ARR Media Manager Search (legacy)",
+    description: "Legacy one-step card. Use ARR Media Search for current installations.",
+  });
+}
